@@ -1,4 +1,6 @@
-<form method=POST action='/users/p_signup'>
+<H2>Sign Up</h2>
+
+<form method='POST' action='/users/p_signup'>
  
     First Name<br>
     <input type='text' name='first_name'>
