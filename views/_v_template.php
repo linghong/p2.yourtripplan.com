@@ -15,11 +15,13 @@
 </head>
 
 <body>	
+
 <nav>
 		<menu>
+	
 			<!-- Menu for users who are logged in -->
-			<php if($user): ?>
-				<li><a href='/post/add'>Add Post</a></li>
+			<?php if($user): ?>
+				<li><a href='/posts/add'>Add Post</a></li>
 				<li><a href='/posts'>View Posts</a></li>
 				<li><a href='posts/users'>Follow Users</a></li>
 				<li><a href='/users/logout'>Logout</a></li>
@@ -29,11 +31,10 @@
 			<?php else: ?>
 				<li><a href='/users/signup'>Sign up</a></li>
 				<li><a href='/users/login'>Log in</a></li>
+				<?php endif; ?>
 
-			<?php endif; ?>
 		</menu>
 	</nav>
-
 
 
 	<?php if(isset($content)) echo $content; ?>
