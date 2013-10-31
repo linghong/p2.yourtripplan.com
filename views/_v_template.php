@@ -15,23 +15,25 @@
 </head>
 
 <body>	
-	<div id='menu'>
-		<a href='/'Home</a>
+<nav>
+		<menu>
+			<!-- Menu for users who are logged in -->
+			<php if($user): ?>
+				<li><a href='/post/add'>Add Post</a></li>
+				<li><a href='/posts'>View Posts</a></li>
+				<li><a href='posts/users'>Follow Users</a></li>
+				<li><a href='/users/logout'>Logout</a></li>
+				<li><a href='/users/profile'>Profile</a></li>
 
-		<!-- Menu for users who are logged in -->
-		<php if($user): ?>
-			<a href='/users/logout'></a>
-			<a href='/users/profile'>Profile</a>
+			<!-- Menu for users who are not logged in -->
+			<?php else: ?>
+				<li><a href='/users/signup'>Sign up</a></li>
+				<li><a href='/users/login'>Log in</a></li>
 
-		<!-- Menu for users who are not logged in -->
-		<?php else: ?>
-			<a href='/users/signup'>Sign up</a>
-			<a href='/users/login'>Log in</a>
+			<?php endif; ?>
+		</menu>
+	</nav>
 
-		<?php endif; ?>
-
-	</div>
-	<br>
 
 
 	<?php if(isset($content)) echo $content; ?>

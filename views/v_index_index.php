@@ -1,11 +1,9 @@
+<?php if($user):?>
 <p>
-	Hello World! You have successfully spawned a new application.
+	Hello <?=$user->first_name;?>! You have successfully logged in.
 </p>
-
+<?php else: ?>
 <p>
-	This message is being triggered via the c_index.php controller, within the index() method.
+	Welcome to my site. Please sign up or log in. 
 </p>
-
-<p>
-	<strong>Since everything is in working order, you should now delete <?php echo APP_PATH?>diagnostics.php</strong>
-</p>
+<?php endif; ?>

@@ -22,26 +22,36 @@ class users_controller extends base_controller {
 
     #see what the form submitted
     public function p_signup() {
+ 
+    /*       
+    #insert this user into the database
+    $user_id = DB::instance(DB_NAME) ->insert('users', $_POST);
+ 
+
+    #Send them to the login page
+    Router::redirect('users/login');
+    */
+     
+
     #Store data
     $_POST['created'] = Time::now();
-    $_POST['modified']= Time::now();
+    $_POST['modified'] = Time::now();
 
     #Encrypt the password
     $_POST['password'] =sha1(PASSWORD_SALT.$_POST['password']);
     $_POST['token']  = sha1(TOKEN_SALT.$_POST['email'].Utils::generate_random_string());
 
-    #insert this user into the database
-    $user_id = DB::instance(DB_NAME) ->insert('users', $_POST);
- 
     /*
-    #Send them to the login page
-    Router::redirect('users/login');
-    */
- 
-    echo 'You\'re signed up';
     echo '<prep>';
     print_r($_POST);
     echo '</prep>';
+    */
+    DB::instance(DB_NAME)->insert_row('users', $_POST);
+    
+   /*
+    #Send them to the login page
+    Router::redirect('users/login');
+   */ 
     }
 
     public function login(){
@@ -54,42 +64,58 @@ class users_controller extends base_controller {
     }
 
 public function p_login(){
-    
+       #Sanitize the user entered data
     /*
-    echo "prev";
-    print_r($_POST);
-    echo "</prev>";
-    */
-    #Sanitize the user entered data
     $_POST = DB::instance(DB_NAME)->sanitize($_POST);
 
+*/
     #compare password against one in the db
-    $_POST['password'] =  sha1(PASSWORD_SALT.$_POST['password']);
+    $_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);
+     
+     /*
+    echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
+    */
 
-    #retrive the token
-    $q = "SELECT token
+     #retrive the token
+    $q = 'SELECT token
           FROM users
-          WHERE email='".$_POST['email']."''
-          AND password ='".$_POST[password]."'";
-
+          WHERE email= "'.$_POST['email'].'"
+          AND password ="'.$_POST[password].'"';
+    
     $token = DB::instance(DB_NAME)->select_field($q);
+   //echo $token;
 
+   #login or not login
     if($token){
-           setcookie('token',$token,strtotime('+1year'),'/');
+           setcookie('token', $token, strtotime('+1year'),'/');
            echo "You are logged in!";
     }else {
            echo  "Login failed!";
         }
+       
     }
 
     public function logout(){
-        echo "This is the logout page";
+  
+      #Generate and save a new token for next login
+      $new_token = sha1(TOKEN_SALT.$this->user->email.Utils::generate_random_string());
+
+      #Create the data array
+      $data = Array("token" => $new_token);
+
+      #Do the update
+      DB::instance(DB_NAME)->update('users', $data, 'WHERE user_id ='.$this->user->user_id);
+
+      #Delete their token cookie
+      setcookie('token', '', strtotime('-1 year'), '/');
+
+      #Send them back to the main index.
+      Router::redirect("/");
     }
 
     public function profile($user_name = NULL){
-    //$view = View::instance('v_users_profile');
-   // $view->user_name = $user_name;
-    //echo $view;
 
         #Create a new View instance     
        //set up the view
@@ -97,7 +123,8 @@ public function p_login(){
       
        #Display the view 
         echo $this->template;
-         /*
+
+        /*
        $this->template->title = "profile";
 
         #create an array of client files to be included in the head
@@ -117,7 +144,7 @@ public function p_login(){
         $this ->template->content->user_name = $user_name;
 
         echo $this->template;
-         */
+       */
 
         }
 }
