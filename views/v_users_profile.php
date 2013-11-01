@@ -1,5 +1,8 @@
-<?php if(isset($user_name)):?>
-    <h1>This is the profile for <?=$user_name?></h1>
-<?php else: ?>
-    <h1>No user has been specified</h1>
-<?php endif; ?>
+<?php foreach($users as $user): ?>
+
+	First Name: <?=$user['first_name']?><br><br>
+	Last Name: <?=$user['last_name']?><br><br>
+	Account Created: <?=$user['created']?><br><br>
+	Email: <?=$user['email']?><br>
+
+<?php endforeach ?>

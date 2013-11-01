@@ -80,7 +80,7 @@ public function p_login(){
     $q = 'SELECT token
           FROM users
           WHERE email= "'.$_POST['email'].'"
-          AND password ="'.$_POST[password].'"';
+          AND password ="'.$_POST['password'].'"';
     
     $token = DB::instance(DB_NAME)->select_field($q);
    //echo $token;
@@ -88,9 +88,12 @@ public function p_login(){
    #login or not login
     if($token){
            setcookie('token', $token, strtotime('+1year'),'/');
-           echo "You are logged in!";
+          
+           #Send them to the main index.
+      Router::redirect("/");
     }else {
-           echo  "Login failed!";
+           #Send them back to the main index.
+      Router::redirect("/users/login");
         }
        
     }
@@ -115,34 +118,47 @@ public function p_login(){
 
     public function profile($user_name = NULL){
 
+      #Redirect users not logged in to login page
+        if(!$this->user){
+          Router::redirect('/users/login');
+        }
+
+      #Logged in users:
         #Create a new View instance     
-       //set up the view
-       $this->template->content = View::instance('v_users_profile');
-      
-       #Display the view 
-        echo $this->template;
+          $this->template->content = View::instance('v_users_profile');
+          $this->template->title = "My profile";
 
-        /*
-       $this->template->title = "profile";
+#Query
+      $q = 'SELECT
+        first_name,
+        last_name,
+        created,
+        email
+      FROM users
+      WHERE user_id = '.$this->user->user_id;
 
+      #Run the query, store the results in the variable $posts
+      $users = DB::instance(DB_NAME)->select_rows($q);
+
+      # Pass data to the View
+      $this->template->content->users = $users;
+
+/*
         #create an array of client files to be included in the head
-        $client_files_head = Array(
+          $client_files_head = Array(
              '/css/widgets.css',
              '/css/profile.css'
              );
-        $this->template->client_files_head = Utils::load_client_files($client_files_head);
+          $this->template->client_files_head = Utils::load_client_files($client_files_head);
  
         #create an array of client files to be included in the head
-        $client_files_body = Array(
+          $client_files_body = Array(
             '/js/widgets.min.js',
             'js/profile.min.js'
             );
-        $this->template->client_files_body = Utils::load_client_files($client_files_body);
-
-        $this ->template->content->user_name = $user_name;
-
+          $this->template->client_files_body = Utils::load_client_files($client_files_body);
+*/
         echo $this->template;
-       */
 
         }
 }

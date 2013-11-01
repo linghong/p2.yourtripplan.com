@@ -21,11 +21,11 @@
 	
 			<!-- Menu for users who are logged in -->
 			<?php if($user): ?>
-				<li><a href='/posts/add'>Add Post</a></li>
+				<li><a href='/posts/add'>Add Posts</a></li>
 				<li><a href='/posts'>View Posts</a></li>
-				<li><a href='posts/users'>Follow Users</a></li>
+				<li><a href='/posts/users'>Follow Users</a></li>
 				<li><a href='/users/logout'>Logout</a></li>
-				<li><a href='/users/profile'>Profile</a></li>
+				<li><a href = '/users/profile/'>My Profile</a></li>
 
 			<!-- Menu for users who are not logged in -->
 			<?php else: ?>
