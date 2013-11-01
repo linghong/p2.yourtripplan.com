@@ -48,10 +48,9 @@ class users_controller extends base_controller {
     */
     DB::instance(DB_NAME)->insert_row('users', $_POST);
     
-   /*
     #Send them to the login page
-    Router::redirect('users/login');
-   */ 
+    Router::redirect('/users/login');
+
     }
 
     public function login(){
@@ -65,10 +64,9 @@ class users_controller extends base_controller {
 
 public function p_login(){
        #Sanitize the user entered data
-    /*
     $_POST = DB::instance(DB_NAME)->sanitize($_POST);
 
-*/
+
     #compare password against one in the db
     $_POST['password'] = sha1(PASSWORD_SALT.$_POST['password']);
      
