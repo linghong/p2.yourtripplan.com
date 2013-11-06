@@ -2,16 +2,14 @@
 Class posts_controller extends base_controller{		
 		public function __construct(){
 			parent::__construct();
-
-	/*
-		#Make sure user is logged in
-			if(!$this->user){
-				die("Members only. <a href='users/login'>Login</a>");
-*/	
-		}
-			
+	}		
 		
 		public function add() {
+
+		#Make sure user is logged in
+			if(!$this->user){
+				Router::redirect('/users/login');
+		}
 
 		# Setup view
 		$this->template->content = View::instance('v_posts_add');
@@ -32,16 +30,19 @@ Class posts_controller extends base_controller{
 
 		#Insert
 		DB::instance(DB_NAME)->insert('posts', $_POST);
-
-		echo "Your post has been added.";
-
+		Router::redirect("/posts");
 		}
-		
+
 		public function index() {
+
+		#Redirect users not logged in to login page
+        if(!$this->user){
+          Router::redirect('/users/login');
+        }
 
 			#Set up the view
 			$this->template->content = View::instance('v_posts_index');
-			$this->template->title 	="All Posts";
+
 
 			#Query
 			$q = 'SELECT
@@ -68,10 +69,15 @@ Class posts_controller extends base_controller{
 			echo $this->template;
 		}
 
+
 		public function users(){
 
+		#Redirect users not logged in to login page
+        if(!$this->user){
+          Router::redirect('/users/login');
+        }
+
 		$this->template->content = View::instance('v_posts_users');
-		$this->template->title 		="Users";
 
 		#Build the query to get all the users
 			$q = 'SELECT *
@@ -95,6 +101,7 @@ Class posts_controller extends base_controller{
 		#Render the view
 			echo $this->template;
 		}
+
 
 		public function follow($user_id_followed){
 

@@ -5,9 +5,6 @@ class users_controller extends base_controller {
         parent::__construct();
     }
 
-  public function index() {
-        echo"This is the index page";
-    }
 
     public function signup() {
 
@@ -22,7 +19,10 @@ class users_controller extends base_controller {
 
     #see what the form submitted
     public function p_signup() {
- 
+    
+    #Sanitize the user entered data
+    $_POST = DB::instance(DB_NAME)->sanitize($_POST);
+
     /*       
     #insert this user into the database
     $user_id = DB::instance(DB_NAME) ->insert('users', $_POST);
@@ -63,7 +63,7 @@ class users_controller extends base_controller {
     }
 
 public function p_login(){
-       #Sanitize the user entered data
+    #Sanitize the user entered data
     $_POST = DB::instance(DB_NAME)->sanitize($_POST);
 
 
@@ -93,7 +93,7 @@ public function p_login(){
       Router::redirect("/");
     }else {
            #Send them back to the main index.
-      Router::redirect("/users/login");
+      Router::redirect("/");
         }
        
     }
@@ -161,6 +161,69 @@ public function p_login(){
         echo $this->template;
 
         }
+
+          public function profile_update() {
+            //upload an image
+            $image = Upload::upload($_FILES, "/uploads/avatars/", array("JPG", "JPEG", "jpg", "jpeg", "gif", "GIF", "png", "PNG"), $this->user->user_id);
+
+
+            if($image == 'Invalid file type.') {
+                // return an error
+              Echo "Your image file type is incorrect.";
+            }
+            else {
+                // process the upload
+                $data = Array("image" => $image);
+                DB::instance(DB_NAME)->update("users", $data, "WHERE user_id = ".$this->user->user_id);
+
+
+                // resize the image
+                $imgObj = new Image('/uploads/avatars/' . $image);
+                $imgObj->resize(100,100);
+                $imageObj->display();
+            }
+
+            // Redirect back to the profile page
+            router::redirect('/users/profile'); 
+           }  
+
+              public function avatar() {
+    #Make sure user is logged in
+      if(!$this->user){
+        Router::redirect('/users/login');
+    }
+
+    # Setup view
+        $this->template->content = View::instance('v_users_avatar');
+      $this->template->title = "New Avata";
+
+      # Render template
+        echo $this->template;
+    }
+
+      public function p_avatar(){ 
+   
+    #UPLOAD IMAGE 
+        Upload::upload($_FILES, "/uploads/avatars/", array("JPG", "JPEG", "jpg", "jpeg", "gif", "GIF", "png", "PNG"), $this->user->user_id);
+/*
+        // filename format extension 
+         $filename = $_FILES['avata']['name'];  
+        $extension = substr($filename, strrpos($filename, '.')); 
+
+        $avatar = $user_id.$extension; 
+*/
+        // Add Image to DB in "avatar" column
+     $data = Array("avata" => $avata);
+
+      #Insert
+      DB::instance(DB_NAME)->update('users', $data,"WHERE user_id = '".$user_id."'");
+echo $file_parts['extension'];
+     #Redirect
+ /*
+      Router::redirect('/posts');
+ */
+    } 
+
 }
  #end of User_controller class
 

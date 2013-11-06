@@ -1,11 +1,8 @@
 <h2>Log in</h2>
+<form class="box" method='POST' action='/users/p_login'>
+   Email: <input type='text' name='email'><br><br>
 
-<form method='POST' action='/users/p_login'>
-   Email<br>
-    <input type='text' name='email'><br><br>
-
-   password<br>
-   <input type='password' name='password'><br><br>
+   password: <input type='password' name='password'><br><br>
 
    <?php if(isset($error)): ?>
    		<div class='error'>
@@ -13,7 +10,6 @@
    		</div>
    		<br>
    	<?php endif; ?>
-
 
    <input type='Submit' value='Log in'>
    

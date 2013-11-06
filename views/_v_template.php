@@ -6,7 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 	<!-- Common CSS/JSS -->
-	<link rel="stylesheet" href="/css/addp.css" type="text/css">
+	<link rel="stylesheet" href="/css/app.css" type="text/css">
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.mim.js"></script>	
 					
 	<!-- Controller Specific JS/CSS -->
@@ -15,32 +15,45 @@
 </head>
 
 <body>	
-
-<nav>
-		<menu>
-	
-			<!-- Menu for users who are logged in -->
-			<?php if($user): ?>
+	<div class="sitetitle">
+		Trip Tweets
+	</div>	
+	<div class="container">
+	<!-- for users who are logged in, add Menu and Content-->
+	<?php if($user): ?>
+			
+			<nav>
+				<li><a href='/posts/index'>My Posts</a></li>
 				<li><a href='/posts/add'>Add Posts</a></li>
 				<li><a href='/posts'>View Posts</a></li>
-				<li><a href='/posts/users'>Follow Users</a></li>
-				<li><a href='/users/logout'>Logout</a></li>
+				<li><a href='/posts/users'>User List</a></li>		
 				<li><a href = '/users/profile/'>My Profile</a></li>
+				<li><a href='/users/avatar'>Avata</a></li>
+				<li><a href='/users/logout'>Log out</a></li>
+			</nav>
+			<div class="clear">
+			</div>
+			<article>
+				<?php if(isset($content)) echo $content; ?>
+			</article>
+	<!-- for users who are not logged in, Sign up or login -->
+	<?php else: ?>
+			<div class="leftcolumn">
+				<?php if(isset($content)) echo $content; ?>
+			</div>
 
-			<!-- Menu for users who are not logged in -->
-			<?php else: ?>
-				<li><a href='/users/signup'>Sign up</a></li>
-				<li><a href='/users/login'>Log in</a></li>
-				<?php endif; ?>
-
-		</menu>
-	</nav>
-
-
-
-	<?php if(isset($content)) echo $content; ?>
-
-
+			<div class="rightcolumn">
+				<div id="top">
+					<?php if(isset($login)) echo $login; ?>
+				</div>
+				<div id="bottom">
+					<?php if(isset($signup)) echo $signup; ?>
+				</div>
+			</div>
+	
+	<?php endif; ?>
+</div>
 	<?php if(isset($client_files_body)) echo $client_files_body; ?>
+
 </body>
 </html>

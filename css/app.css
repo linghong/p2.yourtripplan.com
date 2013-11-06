@@ -1,0 +1,181 @@
+/*
+Title:My P2 Project
+Description: Harvard Extension Class: Dynamic Website Application, Project 2
+URI: http://p2.yourtripplan.com/
+Author: Linghong Chen
+*/
+
+article,body{
+	display:block;
+  }
+ 
+body{
+  color:black;
+  font-size:15px;
+  font-family:"Truebuchet MS", "Helvetica", Serif;
+  width:1050px;
+  text-align:center;
+   background-color:#FFE1E1;
+   background-repeat:no-repeat;
+  background-attachment:fixed;
+  background-position:center; 
+  }
+
+ article{
+  text-align:justify;
+  width:80%;
+  padding:5%;	
+  margin:5%;
+  }
+
+ h1{
+  font-weight:bold;
+ 	font-size:22px;
+  }
+
+h2{
+  font-weight:bold;
+  font-size:17px;
+  }
+
+h3{
+  text-align:center;
+  font-weight:bold;
+  font-size:15px;
+  }
+
+p{
+  font-size:13px;
+  width:90%;
+  height: auto;
+  padding:10px;
+  text-align:left;
+ }
+ 
+ul{
+ text-align:left;
+ }
+ 
+nav li{
+ display:inline;
+  }
+
+.sitetitle{
+  width:1024px;
+  height:80px;
+  margin-bottom:20px;
+  text-align:left;
+  font-size:36px;
+  padding-top:10px;
+  background-color: #FFFFCA;
+  }
+
+.container{
+  color:black;
+  font-size:15px;
+  font-family:"Truebuchet MS", "Helvetica", Serif;
+  width:1024px;
+  height:2500px;
+  text-align:center;
+  background-color: #FFFFCA;
+  }
+
+.midright{
+  margin-left:60%;
+  width:100px;
+  height:40px;
+  border-radius:8px;
+  background-color:#FF6600;
+  }
+
+.leftcolumn{
+  float:left;
+  margin-left:5%;
+  margin-top:40px;
+  width: 40%; 
+  height:auto; 
+  background-color: #CFA0A0;
+  }
+
+.rightcolumn{
+  float:right;
+  width:50%; 
+  height:auto; 
+  }
+
+.clear{
+  clear:both;
+  }
+
+.post{
+  position:relative;
+  width:80%;
+  height:auto;
+  background-color: #FFFFFF;  
+  border: 2px solid  #FFCCFF;
+  margin:15px;
+  padding:15px;
+  }
+
+.addpost{
+  position:relative;
+  width:80%;
+  height:200px;
+  background-color: #FFFFFF;  
+  border: 2px solid #FFCCFF;
+  margin:20px;
+  }
+
+.box{
+  position:relative;
+  width:80%;
+  background-color: #FFCAB0;
+  border:3px solid #FF9F40; 
+  height:auto;
+  padding:5%;
+  margin:5%;
+  text-align:center;
+  }
+
+.frontbox{
+  position:relative;
+  width:80%;
+  background-color: #844242;
+  border:3px solid #FF9F40; 
+  height:auto;
+  padding:5%;
+  margin:5%;
+  text-align:center;
+  color:white;
+  }
+
+.user{
+  position:relative;
+  width:30%;
+  background-color: #FF3300;  
+  border:3px solid #FF6600;
+  color:white;
+  height:auto;
+  padding:15px;
+  margin:20px;
+  text-align:left;
+  }
+
+#top{
+  margin-top:20px;
+  position:relative;
+  width:60%;
+  height:auto;
+  background-color: #844242;
+  border: 2px solid #844242;
+  margin-left:10%;
+  }
+
+#bottom{
+  margin-top:20px;
+  position:relative;
+  width: 80%;
+  height:auto;
+  background-color: #844242;
+  border: 2px solid #844242;
+  }

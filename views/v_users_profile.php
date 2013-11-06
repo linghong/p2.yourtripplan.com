@@ -4,5 +4,6 @@
 	Last Name: <?=$user['last_name']?><br><br>
 	Account Created: <?=$user['created']?><br><br>
 	Email: <?=$user['email']?><br>
+	Avator:<img src='/uploads/avatars/' . $image>
 
 <?php endforeach ?>

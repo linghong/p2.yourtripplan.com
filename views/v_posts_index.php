@@ -1,10 +1,11 @@
 <?php  foreach($posts as $post): ?>
 
-<article>
 
-	<strong><?=$post['first_name']?>posted</strong>
+	<strong><?=$post['first_name']?>  posted:</strong>
 
-	<p><?=$post['content']?></p>
-</article>
+	<div class="post">
+	<?=$post['content']?>
+	</div>
+
 
 <?php endforeach; ?>
