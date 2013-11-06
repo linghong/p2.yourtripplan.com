@@ -7,10 +7,9 @@
 	<div class="frontbox"> 
 		<h1>Extra Features:</h1>
 		<ul>
-			<li>Potofolio</li>
-			<li>Users can load own avata</li>
-			<li>My Posts</li>
-			<li>List of People fllow me</li>
+			<li>My Profile</li>
+			<li>load Your Own Avata</li>
+			<li>My Posts Page</li>
 		</ul>
 	</div>
 
