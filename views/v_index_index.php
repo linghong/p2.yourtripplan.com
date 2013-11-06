@@ -9,8 +9,8 @@
 		<ul>
 			<li>Potofolio</li>
 			<li>Users can load own avata</li>
-			<li>List of fllowers</li>
-			<li>List of fllowees</li>
+			<li>My Posts</li>
+			<li>List of People fllow me</li>
 		</ul>
 	</div>
 

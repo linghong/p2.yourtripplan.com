@@ -4,7 +4,10 @@ Description: Harvard Extension Class: Dynamic Website Application, Project 2
 URI: http://p2.yourtripplan.com/
 Author: Linghong Chen
 */
-
+/*------------------------------------------------------------------------------------------------------------------------
+Main CSS Codes
+---------------------------------------------------------------------------------------------------------------------------
+*/
 article,body{
 	display:block;
   }
@@ -21,14 +24,14 @@ body{
   background-position:center; 
   }
 
- article{
+article{
   text-align:justify;
   width:80%;
   padding:5%;	
   margin:5%;
   }
 
- h1{
+h1{
   font-weight:bold;
  	font-size:22px;
   }
@@ -55,11 +58,23 @@ p{
 ul{
  text-align:left;
  }
- 
+
+nav{
+ padding-top:20px;
+ }
+
 nav li{
  display:inline;
   }
 
+span{
+  font-weight:bold;
+  }
+  
+/*------------------------------------------------------------------------------------------------------------------------
+Front page
+---------------------------------------------------------------------------------------------------------------------------
+*/
 .sitetitle{
   width:1024px;
   height:80px;
@@ -80,14 +95,6 @@ nav li{
   background-color: #FFFFCA;
   }
 
-.midright{
-  margin-left:60%;
-  width:100px;
-  height:40px;
-  border-radius:8px;
-  background-color:#FF6600;
-  }
-
 .leftcolumn{
   float:left;
   margin-left:5%;
@@ -102,9 +109,40 @@ nav li{
   width:50%; 
   height:auto; 
   }
+  
+#top{
+  margin-top:20px;
+  position:relative;
+  width:60%;
+  height:auto;
+  background-color: #844242;
+  border: 2px solid #844242;
+  margin-left:10%;
+  }
+
+#bottom{
+  margin-top:20px;
+  position:relative;
+  width: 80%;
+  height:auto;
+  background-color: #844242;
+  border: 2px solid #844242;
+  }
 
 .clear{
   clear:both;
+  }
+/*------------------------------------------------------------------------------------------------------------------------
+CSS Codes for Posts and Users
+---------------------------------------------------------------------------------------------------------------------------
+*/
+
+.midright{
+  margin-left:60%;
+  width:100px;
+  height:40px;
+  border-radius:8px;
+  background-color:#FF6600;
   }
 
 .post{
@@ -137,6 +175,18 @@ nav li{
   text-align:center;
   }
 
+.profile{
+    width:50%;
+    background-color: #FFCAB0;
+    border:3px solid #FF9F40; 
+    height:auto;
+	margin-top: 20px;
+    padding-left:5%;
+    padding-top:10px;
+    padding-bottom:15px;
+    text-align:left;
+    }
+
 .frontbox{
   position:relative;
   width:80%;
@@ -161,21 +211,3 @@ nav li{
   text-align:left;
   }
 
-#top{
-  margin-top:20px;
-  position:relative;
-  width:60%;
-  height:auto;
-  background-color: #844242;
-  border: 2px solid #844242;
-  margin-left:10%;
-  }
-
-#bottom{
-  margin-top:20px;
-  position:relative;
-  width: 80%;
-  height:auto;
-  background-color: #844242;
-  border: 2px solid #844242;
-  }
