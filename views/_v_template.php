@@ -4,11 +4,14 @@
 		<title><?php if(isset($title)) echo $title; ?></title>
 
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
 		<!-- Common CSS/JSS -->
+		<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
 		<link rel="stylesheet" href="/css/app.css" type="text/css">
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.mim.js"></script>	
-					
+		<script src="js/respond.min.js"></script>
+
 		<!-- Controller Specific JS/CSS -->
 		<?php if(isset($client_files_head)) echo $client_files_head; ?>
 	
@@ -56,7 +59,9 @@
 				</div>
 			<?php endif; ?>
 		</div>
-			<?php if(isset($client_files_body)) echo $client_files_body; ?>
-
+		
+		<?php if(isset($client_files_body)) echo $client_files_body; ?>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script src="js/bootstrp.min.js"></script>
 	</body>
 </html>
