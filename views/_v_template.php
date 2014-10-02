@@ -26,9 +26,6 @@
 			<!-- Site Main body.............................................Site Main body-->
 			<!-- for users who are logged in, add Menu and Content-->
 			<?php if($user): ?>
-			
-			<!-- for users who are logged in, add Menu and Content-->
-			<?php if($user): ?>
 				<!--row2: navigation -->
 				<div class="row">
 					<nav  class="navbar navbar-default" role="navigation">
@@ -56,7 +53,7 @@
 
 				<!--row3-->
 				<div class="row">
-					<article class = "col-lg-12 col-md-12">>
+					<article class = "col-lg-12 col-md-12">
 						<?php if(isset($content)) echo $content; ?>
 					</article>
 				</div>

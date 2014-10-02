@@ -27,27 +27,40 @@
         $_POST['created'] = Time::now();
         $_POST['modified'] = Time::now();
         $_POST['avatar']='example.gif';
+
       #Encrypt the password
         $_POST['password'] =sha1(PASSWORD_SALT.$_POST['password']);
         $_POST['token']  = sha1(TOKEN_SALT.$_POST['email'].Utils::generate_random_string());
 
       DB::instance(DB_NAME)->insert_row('users', $_POST);
 
- 
       #Send them to the login page
       Router::redirect('/users/login');
-
     }
 
     public function login(){
+      #set up view
+      $this->template->content = view::instance ('v_users_login');
+      $this->template->title   ="Login";
+
+      #render template
+      echo $this->template;
+    }
+
+   /*     
+      public function login($error = NULL){
         #set up view
-        $this->template->content = view::instance ('v_users_login');
-        $this->template->title   ="Login";
+        $this->template->content = View::instance ('v_index_index');
+        $this->template->login = View::instance('v_users_login');
+        $this->template->title   = "Login";
+
+        # Pass data to the view
+        $this->template ->login ->error = $error;
 
         #render template
         echo $this->template;
     }
-
+*/
     public function p_login(){
       #Sanitize the user entered data
         $_POST = DB::instance(DB_NAME)->sanitize($_POST);
@@ -68,14 +81,14 @@
         if($token){
            setcookie('token', $token, strtotime('+1year'),'/');
           
-           #Send them to the main index.
-        Router::redirect("/");
+          #Send them to the main index.
+          Router::redirect("/");
       }else {
-           #Send them back to the main index.
-        Router::redirect("/");
-        }
-       
+          #Send them back to the login page.
+          Router::redirect("/users/login/error");
+        }     
       }
+
 
     public function logout(){
   

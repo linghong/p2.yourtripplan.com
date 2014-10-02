@@ -86,19 +86,26 @@ header{
   }
 
 div.background {
-background:url(seashore.jpg) no-repeat;
-height:1050px;
+background:url(../uploads/seashore.jpg) no-repeat;
+padding-bottom:50px;
  }
 
 .title{
-  font-size:24px;
+  font-size:20px;
+  margin-bottom:10px;
 }
+
+.largetitle{
+  font-size:26px;
+}
+
 footer{
   height:60px;
   padding:20px;
 } 
 #top{
   margin-top:40px;
+  padding-top:20px;
   text-align:center;
   height:auto;
   background-color: #844242;
@@ -109,6 +116,7 @@ footer{
 
 #bottom{
   margin-top:40px;
+  padding-top:20px;
   height:auto;
   background-color: #844242;
   border: 2px solid #844242;
@@ -184,14 +192,18 @@ CSS Codes for Posts and Users
 
 .frontbox{
   background-color: #ffffff;
-  height:auto;
-  padding:5%;
-  margin-top:70px;
+  padding:2%;
+  margin-top:7em;
   text-align:center;
   color:black;
   opacity: 0.6;
   filter:alpha(opacity=60); /* For IE8 and earlier */
   }
+
+.frontbox p{
+  font-size:18px;
+  text-align: justify;
+}
 
  .frontbox:hover{
   padding:5%;
