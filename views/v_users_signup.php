@@ -1,3 +1,4 @@
+<div id="bottom">
 <div class="title">New to Triptweets? Sign Up</div>	
 <form class="box" role="form" method='POST' action='/users/p_signup'>
 	<div class="form-group">
@@ -25,4 +26,4 @@
             <p>All fields are required. Please sign up again.</p>
         </div>
     <?php endif; ?>
-    
+</div>

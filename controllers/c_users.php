@@ -6,12 +6,16 @@
     }
 
 
-    public function signup() {
+    public function signup($error = NULL) {
 
         #Set up the view and title
+       $this->template->content= View::instance('v_index_index');
            $this->template->content = View::instance('v_users_signup');
            $this->template->title   = "Sign Up";
- 
+/*
+        # Pass errors
+          $this->template->signup->error = $error;   
+*/
         # Render the view
            echo $this->template;
 
@@ -19,6 +23,24 @@
 
     #see what the form submitted
     public function p_signup() {
+
+          #select email
+        $email = DB::instance(DB_NAME)->select_field('SELECT email FROM users WHERE email = "'.$_POST['email'].'"');
+       
+       #Check if email already exists.If so, display error message
+        if($email)
+        {
+          die("Email already exists! Please sign up again. <a href='/users/signup/'>Back to the sign up page</a>");
+        }
+
+        # Prevent from leaving blank fields                
+        elseif (empty($_POST['last_name']) || empty($_POST['first_name']) || empty($_POST['password']) || empty($_POST['email'])) 
+        {
+        # Display error message
+        Router::redirect("/users/signup/error");
+        }
+
+        else{
     
       #Sanitize the user entered data
         $_POST = DB::instance(DB_NAME)->sanitize($_POST);  
@@ -34,33 +56,25 @@
 
       DB::instance(DB_NAME)->insert_row('users', $_POST);
 
+
       #Send them to the login page
       Router::redirect('/users/login');
+      }
     }
 
-    public function login(){
+    public function login($error = NULL){
       #set up view
+      $this->template->content= View::instance('v_index_index');
       $this->template->content = view::instance ('v_users_login');
       $this->template->title   ="Login";
-
+/*
+      # Pass data to the view
+      $this->template ->login ->error = $error;
+*/
       #render template
       echo $this->template;
     }
 
-   /*     
-      public function login($error = NULL){
-        #set up view
-        $this->template->content = View::instance ('v_index_index');
-        $this->template->login = View::instance('v_users_login');
-        $this->template->title   = "Login";
-
-        # Pass data to the view
-        $this->template ->login ->error = $error;
-
-        #render template
-        echo $this->template;
-    }
-*/
     public function p_login(){
       #Sanitize the user entered data
         $_POST = DB::instance(DB_NAME)->sanitize($_POST);
@@ -135,22 +149,6 @@
 
       # Pass data to the View
         $this->template->content->users = $users;
-
-      /*
-      #create an array of client files to be included in the head
-        $client_files_head = Array(
-             '/css/widgets.css',
-             '/css/profile.css'
-             );
-        $this->template->client_files_head = Utils::load_client_files($client_files_head);
- 
-      #create an array of client files to be included in the head
-        $client_files_body = Array(
-            '/js/widgets.min.js',
-            'js/profile.min.js'
-            );
-          $this->template->client_files_body = Utils::load_client_files($client_files_body);
-      */
 
         echo $this->template;
 

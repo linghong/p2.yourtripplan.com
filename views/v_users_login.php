@@ -1,3 +1,4 @@
+<div id="top"> 
 <div class='title'>Log in</div>
 <form class='box' role='form' method='POST' action='/users/p_login'>
 	<div class='form-group'>
@@ -19,3 +20,4 @@
    <button type='Submit' class='btn btn-default'> Log in</button>
    
 </form>
+</div>

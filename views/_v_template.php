@@ -67,10 +67,10 @@
 					</aside>
 
 					<article class="col-lg-7 col-md-7 ">
-						<div id="top" class="col-lg-offset-2 col-md-8 col-md-offset-2 col-md-8 col-sm-5 col-xs-offset-1 col-xs-10 ">
+						<div class="col-lg-offset-2 col-md-8 col-md-offset-2 col-md-8 col-sm-5 col-xs-offset-1 col-xs-10 ">
 							<?php if(isset($login)) echo $login; ?>
 						</div>
-						<div id="bottom" class="col-lg-offset-2 col-md-8 col-md-offset-2 col-md-8 col-xs-offset-2 col-sm-5 col-xs-offset-1 col-xs-10 ">
+						<div class="col-lg-offset-2 col-md-8 col-md-offset-2 col-md-8 col-xs-offset-2 col-sm-5 col-xs-offset-1 col-xs-10 ">
 							<?php if(isset($signup)) echo $signup; ?>
 						</div>
 					</article>

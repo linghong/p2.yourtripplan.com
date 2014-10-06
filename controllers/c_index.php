@@ -25,18 +25,9 @@ class index_controller extends base_controller {
 			$this->template->signup= View::instance('v_users_signup');
 			$this->template->login= View::instance('v_users_login');
 		# Now set the <title> tag
-			$this->template->title = "MY P2";
+			$this->template->title = "Triptweets";
 
 			     #create an array of client files to be included in the head
-	
-		# CSS/JS includes
-			/*
-			$client_files_head = Array("");
-	    	$this->template->client_files_head = Utils::load_client_files($client_files);
-	    	
-	    	$client_files_body = Array("");
-	    	$this->template->client_files_body = Utils::load_client_files($client_files_body);   
-	    	*/
 	      					     		
 		# Render the view
 			echo $this->template;
